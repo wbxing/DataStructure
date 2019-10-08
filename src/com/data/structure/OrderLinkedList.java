@@ -67,7 +67,7 @@ public class OrderLinkedList {
                     System.out.println(current.data + " -> null ]");
                 } else {
                     // 当前节点不是最后一个节点
-                    System.out.print(current.data + " <-> ");
+                    System.out.print(current.data + " -> ");
                 }
                 current = current.next;
             }
