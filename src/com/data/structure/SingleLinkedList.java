@@ -56,6 +56,9 @@ public class SingleLinkedList {
 
     // 删除表头元素
     public Object deleteHead() {
+        if (this.size == 0) {
+            return null;
+        }
         Object obj = this.head;
         this.head = this.head.next;
         this.size --;
