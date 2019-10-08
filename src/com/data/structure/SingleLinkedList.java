@@ -45,6 +45,7 @@ public class SingleLinkedList {
             this.head = newNode;
         } else {
             Node current = this.head;
+            // 遍历到链表尾部
             while (current.next != null) {
                 current = current.next;
             }
