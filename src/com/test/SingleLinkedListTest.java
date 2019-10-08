@@ -7,7 +7,7 @@ public class SingleLinkedListTest {
         SingleLinkedList singleList = new SingleLinkedList();
         // 打印空链表
         singleList.display();
-        // t头插法
+        // 头插法
         singleList.addHead("B");
         singleList.display();
 
