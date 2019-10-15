@@ -24,6 +24,11 @@ public class testArrayStack {
 
         // 字符串反转
         stringReversal("Hello World!");
+
+        // 括号匹配
+        match("()()()(){}{}{}<><><><>[][][]");
+        match("()()()(){}{{}<><><><>[][][]");
+        match("()()()(){}{{}}<><><><>[][][]");
     }
 
     // 利用栈实现字符串反转
@@ -37,5 +42,43 @@ public class testArrayStack {
             System.out.print(stack.pop());
         }
         System.out.println();
+    }
+
+    // 判断括号是否匹配
+    public static void match(String s) {
+        ArrayStack stack = new ArrayStack();
+        char[] chars = s.toCharArray();
+        for (char c : chars) {
+            switch (c) {
+                case '(':
+                case '<':
+                case '[':
+                case '{':
+                    stack.push(c);
+                    break;
+                case ')':
+                case '>':
+                case ']':
+                case '}':
+                    if (!stack.isEmpty()) {
+                        char ch = stack.pop().toString().toCharArray()[0];
+                        if ((ch == '(' && c != ')')
+                                || (ch == '<' && c != '>')
+                                || (ch == '[' && c != ']')
+                                || (ch == '{' && c != '}')) {
+                            System.out.println("Error");
+                            return;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        if (!stack.isEmpty()) {
+            System.out.println("Error");
+            return;
+        }
+        System.out.println("Right");
     }
 }
