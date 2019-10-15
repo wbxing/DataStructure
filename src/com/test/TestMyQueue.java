@@ -12,5 +12,6 @@ public class TestMyQueue {
         System.out.println(queue.pop());
         queue.push(4);
         queue.push(5);
+        System.out.println(queue.peek());
     }
 }
