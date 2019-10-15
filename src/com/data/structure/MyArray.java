@@ -9,17 +9,15 @@ public class MyArray {
     private int length;
 
     // 默认构造一个长度为 50 的数组
-
     public MyArray() {
-        this.element = 0;
-        this.length = 50;
-        this.intArray = new int[this.length];
+        this(50);
     }
 
     // 初始化一个长度为 Length 的数组
     public MyArray(int length) {
+        this.element = 0;
         this.length = length;
-        this.intArray = new int[length];
+        this.intArray = new int[this.length];
     }
 
     // 获取数组长度
