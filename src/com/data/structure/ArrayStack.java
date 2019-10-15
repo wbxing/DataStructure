@@ -66,7 +66,7 @@ public class ArrayStack {
         // 原先栈的容量
         int oldCapacity = this.size;
         // 判断是否需要扩容
-        if (minCapacity > oldCapacity) {
+        if (minCapacity >= oldCapacity) {
             // 容量扩大两倍，但是检查是否超过 int 的范围
             if ((oldCapacity << 1) - Integer.MAX_VALUE > 0) {
                 newCapacity = Integer.MAX_VALUE;
