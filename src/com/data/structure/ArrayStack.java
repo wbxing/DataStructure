@@ -2,6 +2,9 @@ package com.data.structure;
 
 import java.util.Arrays;
 
+/**
+ * 自动扩容的栈
+ */
 public class ArrayStack {
     // 存储栈内元素的数组
     private Object [] elementData;
@@ -78,6 +81,15 @@ public class ArrayStack {
             return true;
         }
         return false;
+    }
+
+    // 遍历栈内元素
+    // 打印栈内元素
+    public void display() {
+        System.out.print("Stack(bottom-->top):");
+        for (Object elementDatum : this.elementData) {
+            System.out.print(elementDatum + "\t");
+        }
     }
 
 }
