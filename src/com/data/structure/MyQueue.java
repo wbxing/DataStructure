@@ -1,5 +1,8 @@
 package com.data.structure;
 
+/**
+ * 简单队列
+ */
 public class MyQueue {
     // 队列
     private Object [] queue;
