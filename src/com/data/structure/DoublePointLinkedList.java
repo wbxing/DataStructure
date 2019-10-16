@@ -1,5 +1,8 @@
 package com.data.structure;
 
+/**
+ * 双端链表
+ */
 public class DoublePointLinkedList {
     // 头节点
     private Node head;
