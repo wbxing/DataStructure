@@ -1,7 +1,8 @@
 package com.data.structure;
 
-import java.security.PublicKey;
-
+/**
+ * 双向链表
+ */
 public class TwoWayLinkedList {
     // 头节点
     private Node head;
