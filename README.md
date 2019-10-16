@@ -170,6 +170,16 @@ for(int i = 0 ; i < myArray2.length ; i++){
 双端队列就是一个两端都是结尾或者开头的队列，
 队列的每一端都可以进行插入数据项和移除数据。
 
+一般提供四种方法：
+> insertLeft()\
+> insertRight()\
+> removeLeft()\
+> removeRight()
+
+如果限制只使用 insertLeft() 和 removeLeft()，那么队列就变成了栈；
+如果限制只使用 insertLeft() 和 removeRight()，那么就是普通队列。
+
+
 #### 优先队列
 
 优先队列 (priority queue) 是比栈和队列更专用的数据结构，
