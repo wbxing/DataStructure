@@ -1,5 +1,8 @@
 package com.data.structure;
 
+/**
+ * 优先队列
+ */
 public class PriorityQueue {
     // 优先队列
     private int [] queue;
