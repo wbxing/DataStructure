@@ -1,5 +1,8 @@
 package com.data.structure;
 
+/**
+ * 自定义数组
+ */
 public class MyArray {
     // 定义一个数组
     private int [] intArray;
