@@ -21,10 +21,10 @@ public class InfixToSuffix {
     // 中缀表达式转换为后缀表达式，将结果存储在栈中返回，逆序显示即后缀表达式
     public ArrayStack doTrans() {
         for (int i = 0; i < this.infix.length(); i++) {
-            System.out.print("运算符栈中元素：");
-            this.operator.display();
-            System.out.print("结果栈中元素：");
-            this.result.display();
+//            System.out.print("运算符栈中元素：");
+//            this.operator.display();
+//            System.out.print("结果栈中元素：");
+//            this.result.display();
             // 取出当前需要解析的字符
             char ch = this.infix.charAt(i);
             System.out.print("当前需要解析的字符为：" + ch);
