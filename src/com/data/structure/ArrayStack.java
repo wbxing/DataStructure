@@ -88,8 +88,11 @@ public class ArrayStack {
     public void display() {
         System.out.print("Stack(bottom-->top):");
         for (Object elementDatum : this.elementData) {
-            System.out.print(elementDatum + "\t");
+            if (elementDatum != null) {
+                System.out.print(elementDatum + " ");
+            }
         }
+        System.out.println();
     }
 
 }
