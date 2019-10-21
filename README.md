@@ -189,6 +189,134 @@ for(int i = 0 ; i < myArray2.length ; i++){
 而数据项在插入的时候都会插入到合适的位置以确保队列的有序。
 
 
+### 递归
+
+严格来讲递归不算是一种数据结构，而属于一种算法。
+递归，就是在运行的过程中调用自己。
+递归必须要有三个要素：
+1. 边界条件
+1. 递归前进段
+1. 递归返回段
+
+当边界条件不满足时，递归前进；当边界条件满足时，递归返回。
+
+#### 递归的应用
+
+- 求阶乘
+
+  ```java
+  /**
+   * 0！=1  1！=1
+   * 负数没有阶乘,如果输入负数返回-1
+   * @param n 表示求 n 的阶乘
+   * @return
+   */
+  public static int getFactorial(int n){
+      if(n >= 0){
+          if(n==0){
+              System.out.println(n+"!=1");
+              return 1;
+          }else{
+              System.out.println(n);
+              int temp = n*getFactorial(n-1);
+              System.out.println(n+"!="+temp);
+              return temp;
+          }
+      }
+      return -1;
+  }
+  ```
+
+- 二分查找
+
+  ```java
+  public static int search(int[] array,int key,int low,int high){
+      int mid = (high-low)/2+low;
+      if(key == array[mid]){
+          //查找值等于当前值，返回数组下标
+          return mid;
+      }else if(low > high){
+          //找不到查找值，返回-1
+          return -1;
+      }else{
+          if(key < array[mid]){
+              //查找值比当前值小
+              return search(array,key,low,mid-1);
+          }
+          if(key > array[mid]){
+              //查找值比当前值大
+              return search(array,key,mid+1,high);
+          }
+      }
+      return -1;
+  }
+  ```
+
+- 汉诺塔问题
+
+  ```java
+  /**
+   * 汉诺塔问题
+   * @param dish 盘子个数(也表示名称)
+   * @param from 初始塔座
+   * @param temp 中介塔座
+   * @param to   目标塔座
+   */
+  public static void move(int dish,String from,String temp,String to){
+      if(dish == 1){
+          System.out.println("将盘子"+dish+"从塔座"+from+"移动到目标塔座"+to);
+      }else{
+          //A为初始塔座，B为目标塔座，C为中介塔座
+          move(dish-1,from,to,temp);
+          System.out.println("将盘子"+dish+"从塔座"+from+"移动到目标塔座"+to);
+          //B为初始塔座，C为目标塔座，A为中介塔座
+          move(dish-1,temp,from,to);
+      }
+  }
+  ```
+
+- 归并排序
+
+  ```java
+  public static int[] mergeSort(int[] c,int start,int last){
+      if(last > start){
+          //也可以是(start+last)/2，这样写是为了防止数组长度很大造成两者相加超过int范围，导致溢出
+          int mid = start + (last - start)/2;
+          mergeSort(c,start,mid);//左边数组排序
+          mergeSort(c,mid+1,last);//右边数组排序
+          merge(c,start,mid,last);//合并左右数组
+      }
+      return c;
+  }
+  ```
+
+#### 消除递归
+
+一个算法作为一个递归的方法通常通概念上很容易理解，
+但是递归的使用在方法的调用和返回都会有额外的开销，
+通常情况下，用递归能实现的，用循环都可以实现，
+而且循环的效率会更高，
+所以在实际应用中，
+把递归的算法转换为非递归的算法是非常有用的。
+这种转换通常会使用到栈。
+
+#### 递归和栈
+
+递归和栈有这紧密的联系，
+而且大多数编译器都是用栈来实现递归的，
+当调用一个方法时，
+编译器会把这个方法的所有参数和返回地址都压入栈中，
+然后把控制转移给这个方法。
+当这个方法返回时，这些值弹栈。
+参数消失了，并且控制权重新回到返回地址处。
+
+调用一个方法时所发生的事：
+1. 当一个方法被调用时，它的参数和返回地址被压入一个栈中；
+1. 这个方法可以通过获取栈顶元素的值来访问它的参数；
+1. 当这个方法要返回时，它查看栈以获得返回地址，
+然后这个地址以及方法的所有参数退栈，并且销毁。
+
+
 ### 树
 
 树（tree）是一种抽象数据类型（ADT），
