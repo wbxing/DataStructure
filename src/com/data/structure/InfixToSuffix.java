@@ -16,18 +16,20 @@ public class InfixToSuffix {
 
     public InfixToSuffix(String infix) {
         this.infix = infix;
+        this.operator = new ArrayStack(this.infix.length());
+        this.result = new ArrayStack(this.infix.length());
     }
 
     // 中缀表达式转换为后缀表达式，将结果存储在栈中返回，逆序显示即后缀表达式
     public ArrayStack doTrans() {
         for (int i = 0; i < this.infix.length(); i++) {
-//            System.out.print("运算符栈中元素：");
-//            this.operator.display();
-//            System.out.print("结果栈中元素：");
-//            this.result.display();
+            System.out.print("运算符栈中元素：");
+            this.operator.display();
+            System.out.print("结果栈中元素：");
+            this.result.display();
             // 取出当前需要解析的字符
             char ch = this.infix.charAt(i);
-            System.out.print("当前需要解析的字符为：" + ch);
+            System.out.println("当前需要解析的字符为：" + ch);
             switch (ch) {
                 case '+':
                 case '-':
@@ -36,6 +38,13 @@ public class InfixToSuffix {
                 case '*':
                 case '/':
                     gotOperator(ch, 2);
+                    break;
+                case '(':
+                    //如果当前字符是'(',则将其入栈
+                    this.operator.push(ch);
+                    break;
+                case ')':
+                    gotParen();
                     break;
                 default:
                     // 当前解析的是操作数，直接压入结果栈
@@ -86,10 +95,10 @@ public class InfixToSuffix {
     }
 
     // 当前字符是 ')' 时，如果栈顶是'(', 则将这一对括号丢弃，否则依次弹出s1栈顶的字符，压入s2，直到遇到'('
-    public void gotParen(char operator){
+    public void gotParen(){
         while(!this.operator.isEmpty()){
             char ch = (char) this.operator.pop();
-            if(operator != '('){
+            if(ch != '('){
                 this.result.push(ch);
             }else{
                 break;
