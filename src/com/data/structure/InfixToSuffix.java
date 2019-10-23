@@ -1,6 +1,5 @@
 package com.data.structure;
 
-import java.awt.font.OpenType;
 
 /**
  * 中缀表达式转换为后缀表达式
