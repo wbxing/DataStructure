@@ -1,4 +1,4 @@
-package com.data.structure;
+package com.data.structure.linked.list;
 
 /**
  * 单向链表的实现
