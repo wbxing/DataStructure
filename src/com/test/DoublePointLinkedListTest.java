@@ -1,8 +1,6 @@
 package com.test;
 
-import com.data.structure.DoublePointLinkedList;
-
-import java.util.DoubleSummaryStatistics;
+import com.data.structure.linked.list.DoublePointLinkedList;
 
 public class DoublePointLinkedListTest {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.data.structure;
+package com.data.structure.linked.list;
 
 /**
  * 双端链表

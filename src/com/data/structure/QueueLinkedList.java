@@ -1,5 +1,7 @@
 package com.data.structure;
 
+import com.data.structure.linked.list.DoublePointLinkedList;
+
 /**
  * 双端链表实现队列
  * 实现功能
