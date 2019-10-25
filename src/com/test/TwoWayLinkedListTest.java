@@ -1,6 +1,6 @@
 package com.test;
 
-import com.data.structure.TwoWayLinkedList;
+import com.data.structure.linked.list.TwoWayLinkedList;
 
 public class TwoWayLinkedListTest {
     public static void main(String[] args) {
