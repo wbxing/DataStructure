@@ -1,4 +1,4 @@
-package com.data.structure;
+package com.data.structure.queue;
 
 /**
  * 简单队列

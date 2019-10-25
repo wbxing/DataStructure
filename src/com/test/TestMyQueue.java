@@ -1,6 +1,6 @@
 package com.test;
 
-import com.data.structure.MyQueue;
+import com.data.structure.queue.MyQueue;
 
 public class TestMyQueue {
     public static void main(String[] args) {
