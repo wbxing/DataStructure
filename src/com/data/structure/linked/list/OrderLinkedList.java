@@ -1,4 +1,4 @@
-package com.data.structure;
+package com.data.structure.linked.list;
 
 /**
  * 有序链表
