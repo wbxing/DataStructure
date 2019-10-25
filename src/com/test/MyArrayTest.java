@@ -1,6 +1,6 @@
 package com.test;
 
-import com.data.structure.MyArray;
+import com.data.structure.array.MyArray;
 
 public class MyArrayTest {
     public static void main(String[] args) {
