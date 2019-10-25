@@ -1,7 +1,7 @@
 package com.test;
 
 import com.data.structure.stack.ArrayStack;
-import com.data.structure.InfixToSuffix;
+import com.data.structure.stack.InfixToSuffix;
 
 import java.util.Scanner;
 
