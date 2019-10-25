@@ -1,4 +1,4 @@
-package com.data.structure;
+package com.data.structure.stack;
 
 /**
  * 自定义简单栈

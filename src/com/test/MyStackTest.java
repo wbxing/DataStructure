@@ -1,6 +1,6 @@
 package com.test;
 
-import com.data.structure.MyStack;
+import com.data.structure.stack.MyStack;
 
 public class MyStackTest {
     public static void main(String[] args) {
