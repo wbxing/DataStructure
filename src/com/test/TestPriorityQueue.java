@@ -1,6 +1,6 @@
 package com.test;
 
-import com.data.structure.PriorityQueue;
+import com.data.structure.stack.PriorityQueue;
 
 public class TestPriorityQueue {
     public static void main(String[] args) {
