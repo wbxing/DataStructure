@@ -1,6 +1,8 @@
 package com.data.structure;
 
 
+import com.data.structure.stack.ArrayStack;
+
 /**
  * 中缀表达式转换为后缀表达式
  * 利用栈实现
