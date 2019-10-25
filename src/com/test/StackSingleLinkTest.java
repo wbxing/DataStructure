@@ -1,6 +1,6 @@
 package com.test;
 
-import com.data.structure.StackSingleLink;
+import com.data.structure.linked.list.StackSingleLink;
 
 public class StackSingleLinkTest {
     public static void main(String[] args) {

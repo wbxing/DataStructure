@@ -1,4 +1,4 @@
-package com.data.structure;
+package com.data.structure.linked.list;
 
 import com.data.structure.linked.list.SingleLinkedList;
 
