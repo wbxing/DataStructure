@@ -11,7 +11,7 @@ public class Node {
     // 右子节点
     private Node rightChildNode;
     // 标记节点是否被删除
-    private boolean delete;
+    private boolean isDelete;
 
     public Node(int data) {
         this.data = data;
