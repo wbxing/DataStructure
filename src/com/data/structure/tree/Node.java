@@ -19,7 +19,7 @@ public class Node {
 
     // 输出节点
     public void display() {
-        System.out.println(this.data);
+        System.out.println(this.data + "  ");
     }
 
     public int getData() {
