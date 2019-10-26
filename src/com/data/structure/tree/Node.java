@@ -37,4 +37,20 @@ public class Node {
     public boolean isDelete() {
         return isDelete;
     }
+
+    public void setData(int data) {
+        this.data = data;
+    }
+
+    public void setLeftChildNode(Node leftChildNode) {
+        this.leftChildNode = leftChildNode;
+    }
+
+    public void setRightChildNode(Node rightChildNode) {
+        this.rightChildNode = rightChildNode;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
+    }
 }
