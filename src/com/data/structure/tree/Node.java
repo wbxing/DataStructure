@@ -19,23 +19,23 @@ public class Node {
 
     // 输出节点
     public void display() {
-        System.out.println(this.data + "  ");
+        System.out.print(this.data + "  ");
     }
 
     public int getData() {
-        return data;
+        return this.data;
     }
 
     public Node getLeftChildNode() {
-        return leftChildNode;
+        return this.leftChildNode;
     }
 
     public Node getRightChildNode() {
-        return rightChildNode;
+        return this.rightChildNode;
     }
 
     public boolean isDelete() {
-        return isDelete;
+        return this.isDelete;
     }
 
     public void setData(int data) {
