@@ -21,4 +21,20 @@ public class Node {
     public void display() {
         System.out.println(this.data);
     }
+
+    public int getData() {
+        return data;
+    }
+
+    public Node getLeftChildNode() {
+        return leftChildNode;
+    }
+
+    public Node getRightChildNode() {
+        return rightChildNode;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
 }
