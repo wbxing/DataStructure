@@ -8,11 +8,11 @@ public interface Tree {
     // 删除节点
     boolean delete(int key);
     // 中序遍历
-    void infixOrder();
+    void infixOrder(Node current);
     // 前序遍历
-    void preOrder();
+    void preOrder(Node current);
     // 后续遍历
-    void postOrder();
+    void postOrder(Node current);
     // 查找最大值
     Node findMax();
     // 查找最小值
