@@ -206,7 +206,7 @@ for(int i = 0 ; i < myArray2.length ; i++){
 - 求阶乘
 
   ```java
-  /**
+  /*
    * 0！=1  1！=1
    * 负数没有阶乘,如果输入负数返回-1
    * @param n 表示求 n 的阶乘
@@ -256,7 +256,7 @@ for(int i = 0 ; i < myArray2.length ; i++){
 - 汉诺塔问题
 
   ```java
-  /**
+  /*
    * 汉诺塔问题
    * @param dish 盘子个数(也表示名称)
    * @param from 初始塔座
