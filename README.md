@@ -433,7 +433,7 @@ n 的高度为从 n 到一片树叶的最长路径长。
 
 如图所示：
 
-![2-3-4 Tree] (https://github.com/wbxing/DataStructure/blob/master/picture/2-3-4_Tree.png)
+![2-3-4 Tree](https://github.com/wbxing/DataStructure/blob/master/picture/2-3-4_Tree.png)
 
 
 #### 搜索 2-3-4 树
