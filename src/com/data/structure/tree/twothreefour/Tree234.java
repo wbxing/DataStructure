@@ -17,6 +17,7 @@ public class Tree234 {
             System.out.println("/" + this.data);
         }
     }
+
     // 节点类
     private class Node {
         public static final int ORDER = 4;
@@ -25,14 +26,14 @@ public class Tree234 {
         // 父节点
         private Node parent;
         // 子节点，最多四个
-        private Node [] childArray = new Node[ORDER];
+        private Node[] childArray = new Node[ORDER];
         // 数据项，最多三个
-        private DataItem [] itemArray = new DataItem[ORDER - 1];
+        private DataItem[] itemArray = new DataItem[ORDER - 1];
 
         // 连接子节点
         public void connectChild(int childNum, Node child) {
             this.childArray[childNum] = child;
-            if(child != null){
+            if (child != null) {
                 child.parent = this;
             }
         }
@@ -54,6 +55,11 @@ public class Tree234 {
             return this.childArray[0] == null;
         }
 
+        //得到节点的某个数据项
+        public DataItem getItem(int index) {
+            return this.itemArray[index];
+        }
+
         // 判断节点的数据项是否满了（最多3个）
         public boolean isFull() {
             return numItems == ORDER - 1;
@@ -61,8 +67,8 @@ public class Tree234 {
 
         // 找到数据项在节点中的位置
         public int findItem(long key) {
-            for (int j = 0 ; j < ORDER-1 ; j++) {
-                if (this.itemArray[j]==null) {
+            for (int j = 0; j < ORDER - 1; j++) {
+                if (this.itemArray[j] == null) {
                     break;
                 } else if (this.itemArray[j].getData() == key) {
                     return j;
@@ -75,7 +81,7 @@ public class Tree234 {
         public int insertItem(DataItem newItem) {
             this.numItems++;
             long newKey = newItem.getData();
-            for (int j = ORDER-2 ; j >= 0 ; j--) {
+            for (int j = ORDER - 2; j >= 0; j--) {
                 if (this.itemArray[j] != null) {
                     //保存节点某个位置的数据项
                     long itsKey = this.itemArray[j].getData();
@@ -96,15 +102,15 @@ public class Tree234 {
 
         // 移除节点的数据项
         public DataItem removeItem() {
-            DataItem temp = this.itemArray[this.numItems-1];
-            this.itemArray[this.numItems-1] = null;
+            DataItem temp = this.itemArray[this.numItems - 1];
+            this.itemArray[this.numItems - 1] = null;
             this.numItems--;
             return temp;
         }
 
         // 打印节点的所有数据项
         public void displayNode() {
-            for (int j = 0 ; j < numItems ; j++) {
+            for (int j = 0; j < numItems; j++) {
                 itemArray[j].displayItem();
             }
             System.out.println("/");
@@ -120,7 +126,105 @@ public class Tree234 {
 
 
     }
-    ///////// 以上为内部类
+    ///////// 以上为内部类 /////////
 
+    private Node root = new Node();
 
+    // 查找关键字值
+    public int find(long key) {
+        Node curNode = this.root;
+        int childNumber;
+        while (true) {
+            if ((childNumber = curNode.findItem(key)) != -1) {
+                return childNumber;
+            } else if (curNode.isLeaf()) {
+                // 节点是叶节点
+                return -1;
+            } else {
+                curNode = getNextChild(curNode, key);
+            }
+        }
+    }
+
+    public Node getNextChild(Node theNode, long theValue) {
+        int j;
+        int numItems = theNode.getNumItems();
+        for (j = 0; j < numItems; j++) {
+            if (theValue < theNode.getItem(j).getData()) {
+                return theNode.getChild(j);
+            }
+        }
+        return theNode.getChild(j);
+    }
+
+    // 插入数据项
+    public void insert(long dValue) {
+        Node curNode = this.root;
+        DataItem tempItem = new DataItem(dValue);
+        while (true) {
+            if (curNode.isFull()) {
+                // 如果节点满数据项了，则分裂节点
+                split(curNode);
+                curNode = curNode.getParent();
+                curNode = getNextChild(curNode, dValue);
+            } else if (curNode.isLeaf()) {
+                // 当前节点是叶节点
+                break;
+            } else {
+                curNode = getNextChild(curNode, dValue);
+            }
+        }
+        curNode.insertItem(tempItem);
+    }
+
+    // 节点分裂
+    public void split(Node thisNode) {
+        DataItem itemB, itemC;
+        Node parent, child2, child3;
+        int itemIndex;
+        itemC = thisNode.removeItem();
+        itemB = thisNode.removeItem();
+        child2 = thisNode.disconnectChild(2);
+        child3 = thisNode.disconnectChild(3);
+        Node newRight = new Node();
+        if (thisNode == this.root) {
+            // 如果当前节点是根节点，执行根分裂
+            this.root = new Node();
+            parent = this.root;
+            this.root.connectChild(0, thisNode);
+        } else {
+            parent = thisNode.getParent();
+        }
+        // 处理父节点
+        itemIndex = parent.insertItem(itemB);
+        int n = parent.getNumItems();
+        for (int j = n - 1; j > itemIndex; j--) {
+            Node temp = parent.disconnectChild(j);
+            parent.connectChild(j + 1, temp);
+        }
+        parent.connectChild(itemIndex + 1, newRight);
+        // 处理新建的右节点
+        newRight.insertItem(itemC);
+        newRight.connectChild(0, child2);
+        newRight.connectChild(1, child3);
+    }
+
+    // 打印树节点
+    public void displayTree() {
+        recDisplayTree(this.root, 0, 0);
+    }
+
+    private void recDisplayTree(Node thisNode, int level, int childNumber) {
+        System.out.println("level = " + level + " child = " + childNumber + " ");
+        thisNode.displayNode();
+        int numItems = thisNode.getNumItems();
+        for (int j = 0; j < numItems + 1; j++) {
+            Node nextNode = thisNode.getChild(j);
+            if (nextNode != null) {
+                recDisplayTree(nextNode, level + 1, j);
+            } else {
+                return;
+            }
+        }
+    }
 }
