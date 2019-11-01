@@ -23,8 +23,8 @@ public class RBNode<T extends Comparable<T>> {
         this.parent = parent;
     }
 
-    public boolean isColor() {
-        return this.color;
+    public String getColor() {
+        return this.color == RED ? "R" : "B";
     }
 
     public T getKey() {
@@ -41,6 +41,26 @@ public class RBNode<T extends Comparable<T>> {
 
     public RBNode<T> getParent() {
         return this.parent;
+    }
+
+    public void setColor(boolean color) {
+        this.color = color;
+    }
+
+    public void setKey(T key) {
+        this.key = key;
+    }
+
+    public void setLeft(RBNode<T> left) {
+        this.left = left;
+    }
+
+    public void setRight(RBNode<T> right) {
+        this.right = right;
+    }
+
+    public void setParent(RBNode<T> parent) {
+        this.parent = parent;
     }
 
     // 打印节点关键值和颜色信息
