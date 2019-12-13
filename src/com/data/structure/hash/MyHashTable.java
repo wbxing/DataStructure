@@ -14,7 +14,7 @@ public class MyHashTable {
     }
 
     // 哈希函数
-    public int hashFunction(int key){
+    public int hashFunction(int key) {
         return key % this.arraySize;
     }
 
@@ -42,20 +42,20 @@ public class MyHashTable {
                 this.itemNum--;
                 return temp;
             }
-            hashVal ++;
+            hashVal++;
             hashVal %= arraySize;
         }
         return null;
     }
 
     // 查找数据
-    public DataItem find(int key){
+    public DataItem find(int key) {
         int hashVal = hashFunction(key);
         while (this.hashArray[hashVal] != null) {
             if (this.hashArray[hashVal].getKey() == key) {
                 return this.hashArray[hashVal];
             }
-            hashVal ++;
+            hashVal++;
             hashVal %= this.arraySize;
         }
         return null;
@@ -63,6 +63,7 @@ public class MyHashTable {
 
     /**
      * 插入数据，涉及哈希表的扩展
+     *
      * @param item 需要插入的数据项
      */
     public void insert(DataItem item) {
@@ -75,17 +76,17 @@ public class MyHashTable {
         int key = item.getKey();
         int hashVal = hashFunction(key);
         while (this.hashArray[hashVal] != null && this.hashArray[hashVal].getKey() != -1) {
-            hashVal ++;
+            hashVal++;
             hashVal %= this.arraySize;
         }
         this.hashArray[hashVal] = item;
-        this.itemNum ++;
+        this.itemNum++;
     }
 
     // 打印
     public void display() {
         System.out.println("Table:");
-        for (int i = 0 ; i < arraySize ; i++) {
+        for (int i = 0; i < arraySize; i++) {
             if (hashArray[i] != null) {
                 System.out.print(hashArray[i].getKey() + " ");
             } else {
@@ -100,7 +101,7 @@ public class MyHashTable {
      * 因此不能直接拷贝，需要按顺序遍历老数组，并使用 insert 方法向新数组中插入每个数据项。
      * 这个过程叫做重新哈希化。这是一个耗时的过程，但如果数组要进行扩展，这个过程是必须的。
      */
-    public void extendHashTable(){
+    public void extendHashTable() {
         int num = this.arraySize;
         // 重新开始计数
         this.itemNum = 0;
@@ -108,7 +109,7 @@ public class MyHashTable {
         this.arraySize *= 2;
         DataItem[] oldHashArray = this.hashArray;
         this.hashArray = new DataItem[this.arraySize];
-        for (int i = 0 ; i < num ; i++) {
+        for (int i = 0; i < num; i++) {
             insert(oldHashArray[i]);
         }
     }
