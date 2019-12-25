@@ -1,7 +1,5 @@
-package test;
-
-import java.com.data.structure.stack.ArrayStack;
-import java.com.data.structure.stack.InfixToSuffix;
+import data.structure.stack.ArrayStack;
+import data.structure.stack.InfixToSuffix;
 
 import java.util.Scanner;
 

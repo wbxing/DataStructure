@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.linked.list.SingleLinkedList;
+import data.structure.linked.list.SingleLinkedList;
 
 public class SingleLinkedListTest {
     public static void main(String[] args) {

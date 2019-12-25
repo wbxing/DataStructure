@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.stack.PriorityQueue;
+import data.structure.stack.PriorityQueue;
 
 public class TestPriorityQueue {
     public static void main(String[] args) {

@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.tree.BinaryTree;
+import data.structure.tree.BinaryTree;
 
 public class BinaryTreeTest {
     public static void main(String[] args) {

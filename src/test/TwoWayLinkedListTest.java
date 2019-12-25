@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.linked.list.TwoWayLinkedList;
+import data.structure.linked.list.TwoWayLinkedList;
 
 public class TwoWayLinkedListTest {
     public static void main(String[] args) {

@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.recursion.Combination;
+import data.structure.recursion.Combination;
 
 public class CombinationTest {
     public static void main(String[] args) {

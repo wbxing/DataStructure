@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.recursion.Knapsack;
+import data.structure.recursion.Knapsack;
 
 public class KnapsackTest {
     public static void main(String[] args) {

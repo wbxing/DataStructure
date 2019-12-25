@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.queue.MyQueue;
+import data.structure.queue.MyQueue;
 
 public class TestMyQueue {
     public static void main(String[] args) {

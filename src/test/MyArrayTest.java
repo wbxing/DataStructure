@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.array.MyArray;
+import data.structure.array.MyArray;
 
 public class MyArrayTest {
     public static void main(String[] args) {

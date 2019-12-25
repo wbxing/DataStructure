@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.linked.list.DoublePointLinkedList;
+import data.structure.linked.list.DoublePointLinkedList;
 
 public class DoublePointLinkedListTest {
     public static void main(String[] args) {

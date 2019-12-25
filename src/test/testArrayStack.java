@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.stack.ArrayStack;
+import data.structure.stack.ArrayStack;
 
 public class testArrayStack {
     public static void main(String[] args) {

@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.linked.list.StackSingleLink;
+import data.structure.linked.list.StackSingleLink;
 
 public class StackSingleLinkTest {
     public static void main(String[] args) {

@@ -1,6 +1,4 @@
-package test;
-
-import java.com.data.structure.linked.list.OrderLinkedList;
+import data.structure.linked.list.OrderLinkedList;
 
 public class OrderLinkedListTest {
     public static void main(String[] args) {
