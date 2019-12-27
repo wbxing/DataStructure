@@ -1,4 +1,6 @@
-package com.data.structure.hash;
+package data.structure.hash;
+
+import data.structure.hash.DataItem;
 
 /**
  * 有序链表
