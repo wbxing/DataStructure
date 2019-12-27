@@ -2,6 +2,7 @@ package com.data.structure.hash;
 
 public class DataItem {
     private int key;
+    public DataItem next;
 
     public DataItem(int key) {
         this.key = key;
@@ -9,5 +10,9 @@ public class DataItem {
 
     public int getKey() {
         return this.key;
+    }
+
+    public void display() {
+        System.out.println(key + " ");
     }
 }
