@@ -67,7 +67,6 @@ public class OrderLinkedList {
             current.display();
             current = current.next;
         }
-        System.out.println("");
+        System.out.println();
     }
-
 }
