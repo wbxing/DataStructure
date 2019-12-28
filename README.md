@@ -12,3 +12,6 @@
 [DataStructure](DataStructure)
 Java 的一些数据结构
 
+## StudentInfo
+[StudentInfo](StudentInfo)
+小项目：学生信息管理系统
