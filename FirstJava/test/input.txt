@@ -1,0 +1,10 @@
+# FirstJava
+## 第一行代码 Java
+
+### 配置环境：
+
+- IDE: Intellij IDEA
+- JDK: jdk 1.8
+- src/ : code
+- lib/ : library
+- 注：未上传 Intelij IDEA 为项目生成的 .idea/ 文件夹内的所有文件
