@@ -9,8 +9,7 @@ public class Customer {
     private String email;
 
     public Customer() {
-        // 无参构造默认添加 “张三” 的信息
-        this("张三", '男', 30, "12300000000", "zhangsan@email.com");
+
     }
 
     public Customer(String name, char gender, int age, String phone, String email) {
