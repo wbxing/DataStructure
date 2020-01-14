@@ -71,3 +71,5 @@ Head First Java \
   `有风险的行为`
   - MusicTest1 : 异常处理
   - TestException : 流程处理
+  - MinMInMusicApp : 播放音乐
+  - ExTestDrive : 排排看
