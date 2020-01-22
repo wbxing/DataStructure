@@ -10,7 +10,7 @@ public class Programmer extends Employee {
     // 团队成员编号
     private int memberId;
     // 状态
-    private Status status;
+    private Status status = Status.FREE;
     // 设备
     private Equipment equipment;
 
@@ -44,5 +44,10 @@ public class Programmer extends Employee {
 
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
+    }
+
+    @Override
+    public String toString() {
+        return getDetails() + "\t程序员\t" + status + "\t\t\t" + equipment.getDescription();
     }
 }
