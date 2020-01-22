@@ -3,12 +3,12 @@ package com.team.domain;
 public class Notebook implements Equipment {
 
     private String model;
-    private String price;
+    private double price;
 
     public Notebook() {
     }
 
-    public Notebook(String model, String price) {
+    public Notebook(String model, double price) {
         this.model = model;
         this.price = price;
     }
@@ -21,11 +21,11 @@ public class Notebook implements Equipment {
         this.model = model;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
