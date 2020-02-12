@@ -35,3 +35,8 @@ Java 数据结构
 [TeamManagement](TeamManagement)
 
 小项目：开发团队人员管理软件
+
+# Arithmetic
+[Arithmetic](Arithmetic)
+
+一些常见算法题解
