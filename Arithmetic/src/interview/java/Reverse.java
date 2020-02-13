@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class Reverse {
 
-    public String reverse(String str, int startIndex, int endIndex) {
+    public static String reverse(String str, int startIndex, int endIndex) {
         if (str != null) {
             StringBuilder sb = new StringBuilder(str.length());
             sb.append(str, 0, startIndex);
@@ -23,14 +23,4 @@ public class Reverse {
         }
         return null;
     }
-
-    @Test
-    public void testReverse() {
-        String str = "helloworld";
-        String result = reverse(str, 1, str.length() - 2);
-        System.out.println(result);
-        System.out.println("hlrowolled".equals(result));
-    }
-
-
 }
