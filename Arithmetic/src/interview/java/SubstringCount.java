@@ -22,10 +22,10 @@ public class SubstringCount {
                 return 0;
             }
         } else {
-            int index;
-            while ((index = string.indexOf(substring)) != -1) {
+            int index = 0;
+            while ((index = string.indexOf(substring, index)) != -1) {
                 count++;
-                string = string.substring(index + substringLength);
+                index += substringLength;
             }
             return count;
         }
