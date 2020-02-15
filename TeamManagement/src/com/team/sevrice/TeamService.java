@@ -52,10 +52,16 @@ public class TeamService {
         }
 
         Programmer programmer = (Programmer) employee;
-        if ("BUSY".equals(programmer.getStatus().getNAME())) {
-            throw new TeamException("该员工已是某开发团队的员工，无法添加");
-        } else if ("VOCATION".equals(programmer.getStatus().getNAME())) {
-            throw new TeamException("该员工正在休假，无法添加");
+//        if ("BUSY".equals(programmer.getStatus().getNAME())) {
+//            throw new TeamException("该员工已是某开发团队的员工，无法添加");
+//        } else if ("VOCATION".equals(programmer.getStatus().getNAME())) {
+//            throw new TeamException("该员工正在休假，无法添加");
+//        }
+        switch (programmer.getStatus()) {
+            case BUSY:
+                throw new TeamException("该员工已是某开发团队的员工，无法添加");
+            case VOCATION:
+                throw new TeamException("该员工正在休假，无法添加");
         }
 
         int numOfArchitect = 0;
