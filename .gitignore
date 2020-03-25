@@ -1,6 +1,7 @@
 */.idea/
 .idea/
 out/
-*.xml
 *.class
 *.code-workspace
+*.properties
+*.iml
