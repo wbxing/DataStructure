@@ -64,4 +64,14 @@ public interface IBookService {
      * @return 返回分页查询结果
      */
     Page<Book> page(int pageNo, int PageSize);
+
+    /**
+     * 以分页形式返回符合查询价格区间的数据
+     * @param pageNo 开始索引
+     * @param PageSize 每页条目
+     * @param min 最低价格
+     * @param max 最高价格
+     * @return 返回分页查询结果
+     */
+    Page<Book> pageByPrice(int pageNo, int PageSize, int min, int max);
 }

@@ -94,4 +94,45 @@ public class BookDAOImpl extends BaseDAO implements IBookDAO {
         Number number = (Number) queryForSingle(sql);
         return number.intValue();
     }
+
+    @Override
+    public Page<Book> queryPageByPrice(int pageNo, int pageSize, int min, int max) {
+        Page<Book> page = new Page<>();
+        int pageTotalCount = queryBooksCountByPrice(min, max);
+        page.setPageTotalCount(pageTotalCount);
+
+        int pageTotal = pageTotalCount / pageSize;
+        if (pageTotalCount % pageSize > 0) {
+            pageTotal += 1;
+        }
+        page.setPageSize(pageSize);
+        page.setPageTotal(pageTotal);
+
+        // pageNo 需要执行边界检查
+        if (pageNo > pageTotal) {
+            pageNo = pageTotal;
+        }
+        if (pageNo < 1) {
+            pageNo = 1;
+        }
+        page.setPageNo(pageNo);
+        int begin = (pageNo - 1) * pageSize;
+        List<Book> items = queryForPageItemsByPrice(begin, pageSize, min, max);
+        page.setItems(items);
+        return page;
+    }
+
+    @Override
+    public List<Book> queryForPageItemsByPrice(int begin, int pageSize, int min, int max) {
+        String sql = "select `id`,`name`,`author`,`price`,`sales`,`stock`,`img_path` imgPath " +
+                " from t_book where `price` between ? and ? order by `price` limit ?, ? ";
+        return queryForList(Book.class, sql, min, max, begin, pageSize);
+    }
+
+    @Override
+    public int queryBooksCountByPrice(int min, int max) {
+        String sql = "select count(*) from t_book where `price` between ? and ?";
+        Number number = (Number) queryForSingle(sql, min, max);
+        return number.intValue();
+    }
 }

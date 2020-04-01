@@ -85,4 +85,33 @@ public interface IBookDAO {
      * @return 返回查询得到的条目数
      */
     Integer queryAllBooksCount();
+
+    /**
+     * 按照制定价格区间查询数据
+     *
+     * @param pageNo   开始索引
+     * @param pageSize 每页条目数
+     * @param min      最低价格
+     * @param max      最该价格
+     * @return 返回分页查询结果
+     */
+    Page<Book> queryPageByPrice(int pageNo, int pageSize, int min, int max);
+
+    /**
+     * 按照指定价格查询数据
+     *
+     * @param min 最低价格
+     * @param max 最高价格
+     * @return 返回符合条件的数据量
+     */
+    int queryBooksCountByPrice(int min, int max);
+
+    /**
+     * 按照指定价格查询数据
+     *
+     * @param begin    开始索引
+     * @param pageSize 每页数目
+     * @return 返回查询结果集
+     */
+    List<Book> queryForPageItemsByPrice(int begin, int pageSize, int min, int max);
 }

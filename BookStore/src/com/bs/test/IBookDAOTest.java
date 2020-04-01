@@ -57,7 +57,18 @@ public class IBookDAOTest {
     }
 
     @Test
+    public void queryForPageItemsByPrice() {
+        System.out.println(bookDAO.queryForPageItemsByPrice(0, 4, 10, 50));
+    }
+
+    @Test
     public void queryAllBooksCount() {
         System.out.println(bookDAO.queryAllBooksCount());
     }
+
+    @Test
+    public void queryBooksCountByPrice() {
+        System.out.println(bookDAO.queryBooksCountByPrice(10, 50));
+    }
+
 }

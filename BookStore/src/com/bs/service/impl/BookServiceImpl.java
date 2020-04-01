@@ -50,4 +50,9 @@ public class BookServiceImpl implements IBookService {
     public Page<Book> page(int pageNo, int PageSize) {
         return bookDAO.queryPage(pageNo, PageSize);
     }
+
+    @Override
+    public Page<Book> pageByPrice(int pageNo, int PageSize, int min, int max) {
+        return bookDAO.queryPageByPrice(pageNo, PageSize, min, max);
+    }
 }
