@@ -87,7 +87,7 @@ public class Book {
                 ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
                 ", price=" + price +
-                ",             <td>${book.name</td>\n=" + sales +
+                ", sales=" + sales +
                 ", stock=" + stock +
                 ", imgPath='" + imgPath + '\'' +
                 '}';

@@ -1,6 +1,7 @@
 package com.bs.service.impl;
 
 import com.bs.bean.Book;
+import com.bs.bean.Page;
 import com.bs.dao.IBookDAO;
 import com.bs.dao.impl.BookDAOImpl;
 import com.bs.service.IBookService;
@@ -43,5 +44,10 @@ public class BookServiceImpl implements IBookService {
     @Override
     public List<Book> queryAllBooks() {
         return bookDAO.queryAllBooks();
+    }
+
+    @Override
+    public Page<Book> page(int pageNo, int PageSize) {
+        return bookDAO.queryPage(pageNo, PageSize);
     }
 }

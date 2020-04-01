@@ -5,6 +5,8 @@ import com.bs.dao.IBookDAO;
 import com.bs.dao.impl.BookDAOImpl;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class IBookDAOTest {
@@ -45,5 +47,17 @@ public class IBookDAOTest {
     @Test
     public void queryAllBooks() {
         System.out.println(bookDAO.queryAllBooks());
+    }
+
+    @Test
+    public void queryForPageItems() {
+        int begin = 0;
+        int pageSize = 4;
+        System.out.println(bookDAO.queryForPageItems(begin, pageSize));
+    }
+
+    @Test
+    public void queryAllBooksCount() {
+        System.out.println(bookDAO.queryAllBooksCount());
     }
 }

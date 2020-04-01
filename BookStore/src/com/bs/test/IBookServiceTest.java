@@ -45,4 +45,9 @@ private IBookService bookService = new BookServiceImpl();
     public void queryAllBooks() {
         System.out.println(bookService.queryAllBooks());
     }
+
+    @Test
+    public void page() {
+        System.out.println(bookService.page(1, 4));
+    }
 }

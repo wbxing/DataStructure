@@ -1,6 +1,7 @@
 package com.bs.dao;
 
 import com.bs.bean.Book;
+import com.bs.bean.Page;
 
 import java.util.List;
 
@@ -59,4 +60,29 @@ public interface IBookDAO {
      * @return 以 list 数组形式返回查询结果，查不到 null
      */
     List<Book> queryAllBooks();
+
+    /**
+     * 分页查询
+     *
+     * @param pageNo   起始索引
+     * @param pageSize 每页数目
+     * @return 返回分页查询结果
+     */
+    Page<Book> queryPage(int pageNo, int pageSize);
+
+    /**
+     * 每一分页数据
+     *
+     * @param begin    开始索引
+     * @param pageSize 每页数目
+     * @return 返回查询结果
+     */
+    List<Book> queryForPageItems(int begin, int pageSize);
+
+    /**
+     * 查询数据表总数据量
+     *
+     * @return 返回查询得到的条目数
+     */
+    Integer queryAllBooksCount();
 }

@@ -1,6 +1,7 @@
 package com.bs.service;
 
 import com.bs.bean.Book;
+import com.bs.bean.Page;
 
 import java.util.List;
 
@@ -55,4 +56,12 @@ public interface IBookService {
      * @return 以 list 数组形式返回查询结果，查不到 null
      */
     List<Book> queryAllBooks();
+
+    /**
+     * 以分页形式返回查询数据
+     * @param pageNo 开始索引
+     * @param PageSize 每页数目
+     * @return 返回分页查询结果
+     */
+    Page<Book> page(int pageNo, int PageSize);
 }

@@ -1,6 +1,7 @@
 package com.bs.dao.impl;
 
 import com.bs.bean.Book;
+import com.bs.bean.Page;
 import com.bs.dao.BaseDAO;
 import com.bs.dao.IBookDAO;
 
@@ -53,5 +54,44 @@ public class BookDAOImpl extends BaseDAO implements IBookDAO {
     public List<Book> queryAllBooks() {
         String sql = "select `id`,`name`,`author`,`price`,`sales`,`stock`,`img_path` imgPath from t_book";
         return queryForList(Book.class, sql);
+    }
+
+    @Override
+    public Page<Book> queryPage(int pageNo, int pageSize) {
+        Page<Book> page = new Page<>();
+        int pageTotalCount = queryAllBooksCount();
+        int pageTotal = pageTotalCount / pageSize;
+        if (pageTotalCount % pageSize > 0) {
+            pageTotal += 1;
+        }
+        page.setPageTotal(pageTotal);
+        page.setPageSize(pageSize);
+        page.setPageTotalCount(pageTotalCount);
+
+        // pageNo 需要执行边界检查
+        if (pageNo < 1) {
+            pageNo = 1;
+        }
+        if (pageNo > pageTotal) {
+            pageNo = pageTotal;
+        }
+        page.setPageNo(pageNo);
+        int begin = (pageNo - 1) * pageSize;
+        List<Book> items = queryForPageItems(begin, pageSize);
+        page.setItems(items);
+        return page;
+    }
+
+    @Override
+    public List<Book> queryForPageItems(int begin, int pageSize) {
+        String sql = "select `id`,`name`,`author`,`price`,`sales`,`stock`,`img_path` imgPath from t_book limit ?, ?";
+        return queryForList(Book.class, sql, begin, pageSize);
+    }
+
+    @Override
+    public Integer queryAllBooksCount() {
+        String sql = "select count(*) from t_book";
+        Number number = (Number) queryForSingle(sql);
+        return number.intValue();
     }
 }
