@@ -10,10 +10,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
+
 public class UserServlet extends BaseServlet {
 
     private IUserService userService = new UserServiceImpl();
 
+    /**
+     * 用户注销方法
+     *
+     * @param req  请求
+     * @param resp 响应
+     * @throws ServletException Servlet异常
+     * @throws IOException      IO异常
+     */
+    protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 销毁 session
+        req.getSession().invalidate();
+        // 重定向到首页
+        resp.sendRedirect(req.getContextPath());
+    }
+
+    /**
+     * 用户登录方法
+     *
+     * @param req  请求
+     * @param resp 响应
+     * @throws ServletException Servlet异常
+     * @throws IOException      IO异常
+     */
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 获取请求参数
         User user = WebUtils.copyParamToBean(req.getParameterMap(), new User());
@@ -29,10 +54,20 @@ public class UserServlet extends BaseServlet {
             req.getRequestDispatcher("/pages/user/login.jsp").forward(req, resp);
         } else {
             // 登录成功
+            // 保存用户登录信息到 session 域中
+            req.getSession().setAttribute("user", login);
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         }
     }
 
+    /**
+     * 用户注册方法
+     *
+     * @param req  请求
+     * @param resp 响应
+     * @throws ServletException Servlet异常
+     * @throws IOException      IO异常
+     */
     protected void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 获取注册参数
         String repwd = req.getParameter("repwd");
@@ -47,7 +82,9 @@ public class UserServlet extends BaseServlet {
         req.setAttribute("email", user.getEmail());
 
         // 检查验证码是否正确
-        if ("bnbnp".equals(code)) {
+        // 获取正确的验证码
+        String realCode = req.getSession().getAttribute(KAPTCHA_SESSION_KEY).toString();
+        if (realCode != null && realCode.equals(code)) {
             // 检查用户名是否可用
             if (userService.existUsername(user.getUsername())) {
                 // 用户名已经存在
