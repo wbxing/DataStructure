@@ -6,7 +6,14 @@
     <title>网上书城会员注册</title>
     <%--静态包含头部信息的 jsp 文件--%>
     <%@include file="/pages/common/header.jsp" %>
-    <script type="text/javascript" src="static/js/user/register.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // 刷新验证码
+            $("#code_img").click(function () {
+                this.src = "${basePath}code.jpg?d=" + new Date();
+            });
+        });
+    </script>
     <style type="text/css">
         .login_form {
             height: 420px;
@@ -17,7 +24,7 @@
 <body>
 <!--显示 logo 图片-->
 <div id="header">
-<!--    <img class="logo_img" alt="" src="static/img/logo.gif">-->
+    <!--    <img class="logo_img" alt="" src="static/img/logo.gif">-->
     <span class="wel_word">网上书城</span>
 </div>
 
@@ -71,10 +78,11 @@
                         />
                         <br/>
                         <br/>
-                        <label>验证码：</label>
+                        <label>&nbsp;&nbsp;&nbsp;&nbsp;验证码：</label>
                         <label for="code"></label>
-                        <input class="itxt" type="text" style="width: 150px;" id="code" name="code"/>
-                        <img alt="" src="static/img/code.bmp" style="float: right; margin-right: 40px">
+                        <input class="itxt" type="text" style="width: 120px;" id="code" name="code"/>
+                        <img id="code_img" alt="" src="code.jpg"
+                             style="float: right; margin-right: 40px; width: 90px; height: 38px">
                         <br/>
                         <br/>
                         <input type="submit" value="注册" id="sub_btn"/>
