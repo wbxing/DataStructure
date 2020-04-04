@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh_CN">
@@ -6,6 +7,27 @@
     <title>购物车</title>
     <%--静态包含头部信息的 jsp 文件--%>
     <%@include file="/pages/common/header.jsp" %>
+    <script type="text/javascript">
+        $(function () {
+            $("a.deleteItem").click(function () {
+                return confirm("确定要删除" + $(this).parent().parent().find("td:first").text() + "?");
+            });
+            $("#clear").click(function () {
+                return confirm("确定清空购物车吗?");
+            });
+            $(".updateCount").change(function () {
+                let name = $(this).parent().parent().find("td:first").text();
+                let count = this.value;
+                let id = $(this).attr("bookId");
+                if (confirm("确定将" + name +"的数量修改为" + count +"?")) {
+                    location.href = "${basePath}cart?action=updateCount&id=" + id + "&count=" + count;
+                } else {
+                    this.value = this.defaultValue;
+                }
+            });
+
+        });
+    </script>
 </head>
 <body>
 
@@ -26,38 +48,37 @@
             <td>金额</td>
             <td>操作</td>
         </tr>
-        <tr>
-            <td>时间简史</td>
-            <td>2</td>
-            <td>30.00</td>
-            <td>60.00</td>
-            <td><a href="#">删除</a></td>
-        </tr>
+        <c:if test="${empty sessionScope.cart.items}">
+            <tr>
+                <td colspan="5"><a href="index.jsp">购物车为空</a></td>
+            </tr>
+        </c:if>
 
-        <tr>
-            <td>母猪的产后护理</td>
-            <td>1</td>
-            <td>10.00</td>
-            <td>10.00</td>
-            <td><a href="#">删除</a></td>
-        </tr>
-
-        <tr>
-            <td>百年孤独</td>
-            <td>1</td>
-            <td>20.00</td>
-            <td>20.00</td>
-            <td><a href="#">删除</a></td>
-        </tr>
-
+        <c:if test="${not empty sessionScope.cart.items}">
+            <c:forEach items="${sessionScope.cart.items}" var="entry">
+                <tr>
+                    <td>${entry.value.name}</td>
+                    <td>
+                        <label>
+                            <input class="updateCount" style="width: 50px"
+                                   bookId="${entry.value.id}" type="text" value="${entry.value.count}"/>
+                        </label>
+                    </td>
+                    <td>${entry.value.price}</td>
+                    <td>${entry.value.totalPrice}</td>
+                    <td><a class="deleteItem" href="cart?action=deleteFromCart&id=${entry.value.id}">删除</a></td>
+                </tr>
+            </c:forEach>
+        </c:if>
     </table>
-
-    <div class="cart_info">
-        <span class="cart_span">购物车中共有<span class="b_count">4</span>件商品</span>
-        <span class="cart_span">总金额<span class="b_price">90.00</span>元</span>
-        <span class="cart_span"><a href="#">清空购物车</a></span>
-        <span class="cart_span"><a href="pages/cart/checkout.jsp">去结账</a></span>
-    </div>
+    <c:if test="${not empty sessionScope.cart.items}">
+        <div class="cart_info">
+            <span class="cart_span">购物车中共有<span class="b_count">${sessionScope.cart.totalCount}</span>件商品</span>
+            <span class="cart_span">总金额<span class="b_price">${sessionScope.cart.totalPrice}</span>元</span>
+            <span class="cart_span" id="clear"><a href="cart?action=clearCart">清空购物车</a></span>
+            <span class="cart_span"><a href="pages/cart/checkout.jsp">去结账</a></span>
+        </div>
+    </c:if>
 
 </div>
 
