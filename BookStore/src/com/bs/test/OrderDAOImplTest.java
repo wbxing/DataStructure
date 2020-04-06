@@ -4,6 +4,8 @@ import com.bs.bean.Order;
 import com.bs.dao.IOrderDAO;
 import com.bs.dao.impl.OrderDAOImpl;
 import org.junit.Test;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class OrderDAOImplTest {
@@ -11,7 +13,8 @@ public class OrderDAOImplTest {
 
     @Test
     public void saveOrder(){
-        System.out.println(orderDAO.saveOrder(new Order("123464", new java.sql.Date(new Date().getTime()),
+        System.out.println(orderDAO.saveOrder(new Order("123464",
+                new Timestamp(System.currentTimeMillis()).toString().substring(0, 19),
                 100.00, Order.SHIPPED, 1)));
     }
 

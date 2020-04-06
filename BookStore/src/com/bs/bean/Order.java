@@ -9,7 +9,7 @@ public class Order {
     public static final int SIGNED = 2;
 
     private String orderId;
-    private Date createTime;
+    private String createTime;
     private Double totalMoney;
     private Integer status = NOT_SHIPPED;
     private Integer userId;
@@ -17,7 +17,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(String orderId, Date createTime, Double totalMoney, Integer status, Integer userId) {
+    public Order(String orderId, String createTime, Double totalMoney, Integer status, Integer userId) {
         this.orderId = orderId;
         this.createTime = createTime;
         this.totalMoney = totalMoney;
@@ -33,11 +33,11 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

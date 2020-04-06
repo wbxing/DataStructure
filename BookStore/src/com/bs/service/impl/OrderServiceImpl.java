@@ -9,7 +9,7 @@ import com.bs.dao.impl.OrderDAOImpl;
 import com.bs.dao.impl.OrderItemDAOImpl;
 import com.bs.service.IOrderService;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +21,8 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public String createOrder(Cart cart, Integer userId) {
         String orderId = System.currentTimeMillis() + "" + userId;
-        Order order = new Order(orderId, new java.sql.Date(new Date().getTime()), cart.getTotalPrice(), Order.NOT_SHIPPED, userId);
+        Order order = new Order(orderId, new Timestamp(System.currentTimeMillis()).toString().substring(0, 19),
+                cart.getTotalPrice(), Order.NOT_SHIPPED, userId);
         orderDAO.saveOrder(order);
         for (Map.Entry<Integer, CartItem> entry : cart.getItems().entrySet()) {
             CartItem cartItem = entry.getValue();
