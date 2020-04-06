@@ -1,6 +1,6 @@
 package com.bs.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Order {
     public static final int NOT_SHIPPED = 0;
@@ -12,12 +12,12 @@ public class Order {
     private Date createTime;
     private Double totalMoney;
     private Integer status = NOT_SHIPPED;
-    private String userId;
+    private Integer userId;
 
     public Order() {
     }
 
-    public Order(String orderId, Date createTime, Double totalMoney, Integer status, String userId) {
+    public Order(String orderId, Date createTime, Double totalMoney, Integer status, Integer userId) {
         this.orderId = orderId;
         this.createTime = createTime;
         this.totalMoney = totalMoney;
@@ -57,17 +57,17 @@ public class Order {
         this.status = status;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
     @Override
     public String toString() {
-        return "OrderItem{" +
+        return "Order{" +
                 "orderId='" + orderId + '\'' +
                 ", createTime=" + createTime +
                 ", totalMoney=" + totalMoney +

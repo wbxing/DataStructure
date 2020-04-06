@@ -30,7 +30,7 @@
         <%--用户已经登录--%>
         <c:if test="${not empty sessionScope.user}">
             <span>欢迎<span class="um_span">${sessionScope.user.username}</span>光临网上书城</span>
-            <a href="pages/order/order.jsp">我的订单</a>
+            <a href="order?action=showMyOrder">我的订单</a>
             <a href="user?action=logout">注销</a>
         </c:if>
         <a href="pages/cart/cart.jsp">购物车</a>
