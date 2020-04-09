@@ -66,5 +66,14 @@
         <url-pattern>/manager/order</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>ManagerFilter</filter-name>
+        <filter-class>com.bs.filter.ManagerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ManagerFilter</filter-name>
+        <url-pattern>/pages/manager/*</url-pattern>
+        <url-pattern>/manager/*</url-pattern>
+    </filter-mapping>
 
 </web-app>
