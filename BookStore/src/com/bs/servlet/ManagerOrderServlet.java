@@ -6,6 +6,7 @@ import com.bs.bean.OrderItem;
 import com.bs.bean.User;
 import com.bs.service.IOrderService;
 import com.bs.service.impl.OrderServiceImpl;
+import com.bs.util.JdbcUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class ManagerOrderServlet extends BaseServlet {
-    private IOrderService orderService = new OrderServiceImpl();
+    private final IOrderService orderService = new OrderServiceImpl();
 
     protected void createOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cart cart = (Cart) req.getSession().getAttribute("cart");
@@ -23,7 +24,14 @@ public class ManagerOrderServlet extends BaseServlet {
             resp.sendRedirect(req.getContextPath() + "/pages/user/login.jsp");
         } else {
             Integer userId = user.getId();
-            String orderId = orderService.createOrder(cart, userId);
+            String orderId = null;
+            try {
+                orderId = orderService.createOrder(cart, userId);
+                JdbcUtils.commitAndClose();
+            } catch (Exception e) {
+                JdbcUtils.rollbackAndClose();
+                e.printStackTrace();
+            }
             req.getSession().setAttribute("orderId", orderId);
             resp.sendRedirect(req.getContextPath() + "/pages/cart/checkout.jsp");
         }

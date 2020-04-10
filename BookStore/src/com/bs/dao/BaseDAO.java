@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class BaseDAO {
     // 使用 dbUtils 操作数据库
-    private QueryRunner qr = new QueryRunner();
+    private final QueryRunner qr = new QueryRunner();
 
     /**
      * 更新数据库中的数据
@@ -23,14 +23,13 @@ public abstract class BaseDAO {
      */
     public int update(String sql, Object... args) {
         Connection conn = JdbcUtils.getConnection();
+
         try {
             return qr.update(conn, sql, args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(conn);
+            throw new RuntimeException();
         }
-        return -1;
     }
 
     /**
@@ -44,14 +43,13 @@ public abstract class BaseDAO {
      */
     public <T> T queryForOne(Class<T> type, String sql, Object... args) {
         Connection conn = JdbcUtils.getConnection();
+
         try {
             return qr.query(conn, sql, new BeanHandler<>(type), args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(conn);
+            throw new RuntimeException();
         }
-        return null;
     }
 
     /**
@@ -65,14 +63,13 @@ public abstract class BaseDAO {
      */
     public <T> List<T> queryForList(Class<T> type, String sql, Object... args) {
         Connection conn = JdbcUtils.getConnection();
+
         try {
             return qr.query(conn, sql, new BeanListHandler<>(type), args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(conn);
+            throw new RuntimeException();
         }
-        return null;
     }
 
     /**
@@ -84,13 +81,12 @@ public abstract class BaseDAO {
      */
     public Object queryForSingle(String sql, Object... args) {
         Connection conn = JdbcUtils.getConnection();
+
         try {
             return qr.query(conn, sql, new ScalarHandler<>(), args);
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            JdbcUtils.close(conn);
+            throw new RuntimeException();
         }
-        return null;
     }
 }

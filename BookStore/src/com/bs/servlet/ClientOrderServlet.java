@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class ClientOrderServlet extends BaseServlet {
-    private IOrderService orderService = new OrderServiceImpl();
+    private final IOrderService orderService = new OrderServiceImpl();
 
     protected void sendOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String orderId = req.getParameter("orderId");
