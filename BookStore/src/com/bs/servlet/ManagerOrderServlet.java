@@ -24,14 +24,7 @@ public class ManagerOrderServlet extends BaseServlet {
             resp.sendRedirect(req.getContextPath() + "/pages/user/login.jsp");
         } else {
             Integer userId = user.getId();
-            String orderId = null;
-            try {
-                orderId = orderService.createOrder(cart, userId);
-                JdbcUtils.commitAndClose();
-            } catch (Exception e) {
-                JdbcUtils.rollbackAndClose();
-                e.printStackTrace();
-            }
+            String orderId = orderService.createOrder(cart, userId);
             req.getSession().setAttribute("orderId", orderId);
             resp.sendRedirect(req.getContextPath() + "/pages/cart/checkout.jsp");
         }

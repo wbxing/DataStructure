@@ -70,10 +70,21 @@
         <filter-name>ManagerFilter</filter-name>
         <filter-class>com.bs.filter.ManagerFilter</filter-class>
     </filter>
+
     <filter-mapping>
         <filter-name>ManagerFilter</filter-name>
         <url-pattern>/pages/manager/*</url-pattern>
         <url-pattern>/manager/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>TransactionFilter</filter-name>
+        <filter-class>com.bs.filter.TransactionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TransactionFilter</filter-name>
+        <!--过滤所有请求-->
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
 </web-app>
