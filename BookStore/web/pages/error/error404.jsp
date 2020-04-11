@@ -10,6 +10,6 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		系统出现故障，我们马上为您解决。请耐心等待！<a href="${pageContext.request.contextPath }">返回首页</a>
+		对不起，您访问的资源不存在或者已被删除！<a href="index.jsp">返回首页</a>
 	</body>
 </html>
