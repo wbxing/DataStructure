@@ -4,11 +4,14 @@ import com.bs.bean.User;
 import com.bs.service.IUserService;
 import com.bs.service.impl.UserServiceImpl;
 import com.bs.util.WebUtils;
+import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
 
@@ -16,14 +19,6 @@ public class UserServlet extends BaseServlet {
 
     private IUserService userService = new UserServiceImpl();
 
-    /**
-     * 用户注销方法
-     *
-     * @param req  请求
-     * @param resp 响应
-     * @throws ServletException Servlet异常
-     * @throws IOException      IO异常
-     */
     protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 销毁 session
         req.getSession().invalidate();
@@ -31,14 +26,6 @@ public class UserServlet extends BaseServlet {
         resp.sendRedirect(req.getContextPath());
     }
 
-    /**
-     * 用户登录方法
-     *
-     * @param req  请求
-     * @param resp 响应
-     * @throws ServletException Servlet异常
-     * @throws IOException      IO异常
-     */
     protected void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 获取请求参数
         User user = WebUtils.copyParamToBean(req.getParameterMap(), new User());
@@ -60,14 +47,6 @@ public class UserServlet extends BaseServlet {
         }
     }
 
-    /**
-     * 用户注册方法
-     *
-     * @param req  请求
-     * @param resp 响应
-     * @throws ServletException Servlet异常
-     * @throws IOException      IO异常
-     */
     protected void register(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 获取注册参数
         String repwd = req.getParameter("repwd");
@@ -107,5 +86,17 @@ public class UserServlet extends BaseServlet {
             System.out.println("验证码[" + code + "]错误");
             req.getRequestDispatcher("/pages/user/register.jsp").forward(req, resp);
         }
+    }
+
+    protected void ajaxExistUsername(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 获取请求的参数
+        String username = req.getParameter("username");
+        // 调用 userService.existUsername() 方法
+        boolean isExist = userService.existUsername(username);
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("existUsername", isExist);
+        Gson gson = new Gson();
+        String json = gson.toJson(resultMap);
+        resp.getWriter().write(json);
     }
 }

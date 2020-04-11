@@ -21,6 +21,8 @@ public class TransactionFilter implements Filter {
             // 回滚事务
             JdbcUtils.rollbackAndClose();
             e.printStackTrace();
+            // 将异常抛给服务器进行统一处理
+            throw new RuntimeException();
         }
     }
 
