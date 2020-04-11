@@ -6,7 +6,29 @@
     <title>网上书城会员登录</title>
     <%--静态包含头部信息的 jsp 文件--%>
     <%@include file="/pages/common/header.jsp" %>
-    <script type="text/javascript" src="static/js/user/login.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // 给登录绑定单击事件
+            $("#sub_btn").click(function () {
+                // 验证用户名不为空
+                const usernameText = $("#username").val().trim();
+                const $spanErrorMsg = $("span.errorMsg");
+                if (usernameText === null || usernameText.length === 0) {
+                    $spanErrorMsg.text("请输入用户名");
+                    return false;
+                }
+                // 验证密码不为空
+                const passwordText = $("#password").val();
+
+                if (passwordText == null || passwordText.length === 0) {
+                    $spanErrorMsg.text("请输入密码");
+                    return false;
+                }
+                // 去掉错误信息
+                $spanErrorMsg.text("");
+            });
+        });
+    </script>
 </head>
 <body>
 <div id="header">
